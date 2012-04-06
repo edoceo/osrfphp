@@ -1,0 +1,19 @@
+
+These PHP libs are designed to emulate a similar interface to that exposed by the opensrf.js libs
+
+@see http://www.open-ils.org/dokuwiki/doku.php?id=opensrf_over_http
+
+
+Licence: MIT? GPL?
+
+Author: David Busby of Edoceo, Inc.
+Copyright: 2012 Edoceo, Inc.
+
+
+11:32 <edoceo> should my docgen.xsl file show information about open-ils.pcrud.search.brt ? - when I click that one nothing happens
+11:42 <senator> doubtful, but all pcrud search methods are the same
+11:42 <senator> first argument is authtoken
+11:42 <senator> second is the where clause of a json query
+11:43 <senator> third is optional object with possible properties join, limit, offset, order by
+11:43 <senator> order_by, rather
+11:43 <senator> and flesh and flesh_fields for 2.2+
