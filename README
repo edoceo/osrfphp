@@ -2,6 +2,8 @@
 These PHP libs are designed to emulate a similar interface to that exposed by the opensrf.js libs
 
 @see http://www.open-ils.org/dokuwiki/doku.php?id=opensrf_over_http
+@see bzr.coffeecode.net/evergreen-social/build/i18n/scripts/fieldmapper.py
+
 
 
 Licence: MIT? GPL?

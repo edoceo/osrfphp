@@ -5,10 +5,14 @@
 
 class OpenILS_FieldMapper
 {
-    private $_map_a; // ID to Name
-    private $_map_b; // Name to ID
-    private $_obj;
+    protected $_map_a; // ID to Name
+    protected $_map_b; // Name to ID
+    protected $_obj;
 
+    protected static $_idl = '/openils/conf/fm_IDL.xml';
+
+    /**
+    */
     function __construct($obj)
     {
         $this->_obj = $obj;
@@ -18,6 +22,12 @@ class OpenILS_FieldMapper
         if (!empty($obj->__c)) {
             $this->setMap($obj->__c);
         }
+    }
+    /**
+    */
+    static function setIDL($f)
+    {
+        self::$_idl = $f;
     }
     /**
     */
@@ -32,7 +42,7 @@ class OpenILS_FieldMapper
         // $map = $doc->getElementById('brt');
         // radix::dump($map);
 
-        $xml = simplexml_load_file(Radix::$root . '/etc/fm_IDL.xml');
+        $xml = simplexml_load_file(self::$_idl);
         // // $res = $xml->getDocNamespaces(true);
         // // @todo should xpath query
         foreach ($xml->class as $c) {
