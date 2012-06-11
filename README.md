@@ -18,3 +18,10 @@ Then, point the PHP scripts at this library directory
 <pre>
     git clone git://github.com/edoceo/osrfphp.git /openils/lib/osrfphp
 </pre>
+
+#### See Also
+
+There are two other libraries for PHP binding to OpenSRF
+
+* https://github.com/tadl/opensrf-php
+* https://github.com/pranjal710/osrf
