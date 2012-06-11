@@ -1,21 +1,20 @@
+h1. OpenSRF over HTTP - PHP Library
 
 These PHP libs are designed to emulate a similar interface to that exposed by the opensrf.js libs
 
 @see http://www.open-ils.org/dokuwiki/doku.php?id=opensrf_over_http
-@see bzr.coffeecode.net/evergreen-social/build/i18n/scripts/fieldmapper.py
+@see http://bzr.coffeecode.net/evergreen-social/build/i18n/scripts/fieldmapper.py
 
-
-
-Licence: MIT? GPL?
+Licence: BSD
 
 Author: David Busby of Edoceo, Inc.
 Copyright: 2012 Edoceo, Inc.
 
+h2. Installation
 
-11:32 <edoceo> should my docgen.xsl file show information about open-ils.pcrud.search.brt ? - when I click that one nothing happens
-11:42 <senator> doubtful, but all pcrud search methods are the same
-11:42 <senator> first argument is authtoken
-11:42 <senator> second is the where clause of a json query
-11:43 <senator> third is optional object with possible properties join, limit, offset, order by
-11:43 <senator> order_by, rather
-11:43 <senator> and flesh and flesh_fields for 2.2+
+We generally just git clone this to a reasonable library location.
+Then, point the PHP scripts at this library directory
+
+<pre>
+    git clone git://github.com/edoceo/osrfphp.git /openils/lib/osrfphp
+</pre>
