@@ -1,5 +1,11 @@
 <?php
 /**
+    @file
+    @brief A Message from the OpenSRF Wire
+
+    @author David Busby
+    @copyright edoceo, inc.
+    @license BSD
 
 */
 

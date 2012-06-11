@@ -2,6 +2,11 @@
 /**
     An Interface to OpenSRF HTTP Translator
     It will get an put stuff to the HTTP translator
+
+    @author David Busby
+    @copyright edoceo, inc.
+    @license BSD
+
 */
 
 /**
@@ -18,6 +23,7 @@ class osrf
     protected $_host_uri;  // Base of Evergreen Server 
 
     /**
+        @param $opt array('host'=>, 'idl_file' => )
     */
     function __construct($opt)
     {
@@ -28,6 +34,9 @@ class osrf
             $this->_idl_file = $opt['idl_file'];
         };
     }
+    /**
+        Static One-Liner Interface
+    */
     static function easy($api,$arg)
     {
         $req = new osrfMethod($api); // Booking Resource Type
@@ -68,6 +77,7 @@ class osrf
     }
     /**
         @param $msg osrfMessage
+        @return osrfResult
     */
     function send($msg=null)
     {

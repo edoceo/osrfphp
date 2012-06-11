@@ -1,19 +1,30 @@
 <?php
 /**
+    @file
+    @brief A Fieldmapper for OpenILS/OpenSRF
+    @uses '/openils/conf/fm_IDL.xml'
+
+    @author David Busby
+    @copyright edoceo, inc.
+    @license BSD
 
 */
 
+/**
+    @brief the OpenILS Field Mapper
+*/
 class OpenILS_FieldMapper
 {
+    protected $_idl = '/openils/conf/fm_IDL.xml';
     protected $_map_a; // ID to Name
     protected $_map_b; // Name to ID
     protected $_obj;
-
-    protected static $_idl = '/openils/conf/fm_IDL.xml';
-
+    protected $_xml
     /**
+        @param $obj object to map
+        @param $idl optional IDL file
     */
-    function __construct($obj)
+    function __construct($obj,$idl=null)
     {
         $this->_obj = $obj;
         if (!empty($obj->__p)) {
@@ -22,27 +33,20 @@ class OpenILS_FieldMapper
         if (!empty($obj->__c)) {
             $this->setMap($obj->__c);
         }
+        if ( (!empty($idl)) && (is_file($idl)) ) {
+            $this->_idl = $idl;
+        }
     }
     /**
-    */
-    static function setIDL($f)
-    {
-        self::$_idl = $f;
-    }
-    /**
+        Set the Map based on the Object Class
+        @param name the name to map to
+        @return void
     */
     function setMap($name)
     {
-        // error_reporting(0xffffffff);
-        // $doc = new DOMDocument();
-        // $doc->validateOnParse = true;
-        // radix::dump($doc->load(Radix::$root . '/etc/fm_IDL.xml'));
-        // // $doc->validate();
-        // 
-        // $map = $doc->getElementById('brt');
-        // radix::dump($map);
-
-        $xml = simplexml_load_file(self::$_idl);
+        if (empty($this->_xml)) {
+            $this->_xml = simplexml_load_file($this->_idl);
+        }
         // // $res = $xml->getDocNamespaces(true);
         // // @todo should xpath query
         foreach ($xml->class as $c) {
@@ -62,19 +66,22 @@ class OpenILS_FieldMapper
             }
         }
     }
-    
+
     /**
         Convert to An Array K=>V
+        @return array
     */
     function toArray()
     {
         $ret = array();
         foreach ($this->_map_b as $k=>$v) {
-            $ret[$k] = @$this->_obj[$v];
+            $ret[$k] = $this->_obj[$v];
         }
         return $ret;
     }
     /**
+        Magic Getter
+        @return object property
     */
     function __get($k)
     {
